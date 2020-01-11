@@ -11,23 +11,23 @@ This project contains three parts. First write a data cleaning pipeline to extra
 Then, write a machine learning pipeline to train and tune the classification model. Finally, deploy a web application.
 
 ## Files Explanation
-- app
-| - template
-| |- master.html  # main page of web app
-| |- go.html  # classification result page of web app
-|- run.py  # Flask file that runs app
+- app \
+| - template \
+| |- master.html  # main page of web app \
+| |- go.html  # classification result page of web app  \
+|- run.py  # Flask file that runs app 
 
-- data
-|- disaster_categories.csv  # data to process 
-|- disaster_messages.csv  # data to process
-|- process_data.py
-|- InsertDatabaseName.db   # database to save clean data to
+- data \
+|- disaster_categories.csv  # data to process \
+|- disaster_messages.csv  # data to process \
+|- process_data.py \
+|- InsertDatabaseName.db   # database to save clean data to 
 
-- models
-|- train_classifier.py
+- models \
+|- train_classifier.py \
 |- classifier.pkl  # saved model 
 
-- README.md
+- README.md 
 
 
 1. Flask Web App (app/run.py)
