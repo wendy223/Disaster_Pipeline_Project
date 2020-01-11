@@ -10,8 +10,29 @@ The final delivery of this project is to show a web app where an emergency worke
 This project contains three parts. First write a data cleaning pipeline to extract, transform, and load dataset. 
 Then, write a machine learning pipeline to train and tune the classification model. Finally, deploy a web application.
 
-### Files Explanation
-1. ETL Pipeline (data/process_data.py)
+## Files Explanation
+- app
+| - template
+| |- master.html  # main page of web app
+| |- go.html  # classification result page of web app
+|- run.py  # Flask file that runs app
+
+- data
+|- disaster_categories.csv  # data to process 
+|- disaster_messages.csv  # data to process
+|- process_data.py
+|- InsertDatabaseName.db   # database to save clean data to
+
+- models
+|- train_classifier.py
+|- classifier.pkl  # saved model 
+
+- README.md
+
+
+1. Flask Web App (app/run.py)
+
+2. ETL Pipeline (data/process_data.py)
 In a Python script, process_data.py, write a data cleaning pipeline that:
 
 Loads the messages and categories datasets (data/disaster_messages.csv & data/disaster_categories.csv)
@@ -19,8 +40,7 @@ Merges the two datasets
 Cleans the data
 Stores it in a SQLite database (data/DisasterResponse.db)
 
-
-2. ML Pipeline (models/train_classifier.py)
+3. ML Pipeline (models/train_classifier.py)
 In a Python script, train_classifier.py, write a machine learning pipeline that:
 
 Loads data from the SQLite database
@@ -30,9 +50,7 @@ Trains and tunes a model using GridSearchCV
 Outputs results on the test set
 Exports the final model as a pickle file (models/classifier.pkl)
 
-3. Flask Web App (app/run.py)
-
-### Instructions for runing the code:
+## Instructions for runing the code:
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
