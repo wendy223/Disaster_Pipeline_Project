@@ -5,6 +5,10 @@ import os
 
 # test it
 def load_data(messages_filepath, categories_filepath):
+    '''
+    Loads the messages and categories datasets
+    Merges the two datasets
+    '''
     # load database
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
@@ -15,6 +19,12 @@ def load_data(messages_filepath, categories_filepath):
     return df
     
 def clean_data(df):
+    '''
+    Cleans the data:
+    1. Split categories into separate category columns
+    2. Convert category values to just numbers 0 or 1
+    3. Drop duplicates
+    '''
     
     #  Split categories into separate category columns.
     categories = df['categories'].str.split(';',expand=True)  # create a dataframe of the 36 individual category columns
@@ -38,13 +48,16 @@ def clean_data(df):
     return df
 
 def save_data(df, database_filename):
+    '''
+    Stores it in a SQLite database (data/DisasterResponse.db)
+    '''
     
     # remove the DisasterResonse.db
     os.remove('data/DisasterResponse.db')
     
     # create a sql db; save the clean database into an sqlite database
-    engine = create_engine('sqlite:////home/workspace/data/DisasterResponse.db')
-    
+    engine = create_engine('sqlite:////home/workspace/Disaster_Pipeline_Project/'+database_filename)
+    print(engine)
     # convert df framework into the sql
     df.to_sql('DisasterResponse', engine, index=False)
     

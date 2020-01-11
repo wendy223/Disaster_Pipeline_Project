@@ -23,6 +23,9 @@ from sklearn.svm import SVC
 import pickle
 
 def load_data(database_filepath):
+    '''
+    Loads data from the SQLite database
+    '''
     nltk.download('wordnet')
     nltk.download('punkt')
     nltk.download('stopwords')
@@ -33,8 +36,11 @@ def load_data(database_filepath):
     category_names = df.iloc[:, 4:39].columns.tolist()
     return X,Y, category_names
 
-
 def tokenize(text):
+    '''
+    Builds a text processing pipeline
+    '''
+    
     # normalization 
     text = text.lower()
     text = re.sub(r"[^a-zA-Z0-9]", " ",text)
@@ -56,6 +62,10 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    1. Builds a machine learning pipeline
+    2. Trains and tunes a model using GridSearchCV
+    '''
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -74,6 +84,10 @@ def build_model():
     return cv
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    1. Splits the dataset into training and test sets
+    2. Outputs results on the test set
+    '''
     
     Y_pred = model.predict(X_test)
     for i in range(len(category_names)):
@@ -90,9 +104,11 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    '''
+    Exports the final model as a pickle file (models/classifier.pkl)
+    '''
     pickle.dump(model, open(model_filepath, 'wb'))
     
-
 def main():
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]

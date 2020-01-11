@@ -40,12 +40,25 @@ def index():
     
     # extract data needed for visuals
     # TODO: Below is an example - modify to extract data for your own visuals
+    
+    # first figure for the genre messages
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
+    
+    # second figure for the earthquake message
+    earthquake_counts = df.groupby('earthquake').count()['message']
+    earthquake_names = list(earthquake_counts.index)    
+
+    # third figure for the floods message
+    floods_counts = df.groupby('floods').count()['message']
+    floods_names = list(floods_counts.index)  
+    
     
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
+        
+        # first graph
         {
             'data': [
                 Bar(
@@ -63,7 +76,50 @@ def index():
                     'title': "Genre"
                 }
             }
+        },
+        # end of the first
+        
+        # the second graph        
+        {
+            'data': [
+                Bar(
+                    x=earthquake_names,
+                    y=earthquake_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message Earthquake',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Earthquake"
+                }
+            }
+        },
+        # the end of second graph
+        
+        # third graph
+        {
+            'data': [
+                Bar(
+                    x=floods_names,
+                    y=floods_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message Floods',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Floods"
+                }
+            }
         }
+        # end of the third graph
     ]
     
     # encode plotly graphs in JSON
