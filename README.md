@@ -3,6 +3,8 @@
 ## Summary
 For this project, the dataset contains real messages that were sent during disaster events. I created a machine learning pipeline to categorize these events so that we can send the messages to an appropriate disaster relief agency.
 
+The project is going to using ML classifiers.
+
 ### Task
 The final delivery of this project is to show a web app where an emergency worker can input a new message and get classification results in several categories.
 
