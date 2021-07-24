@@ -1,5 +1,7 @@
 # Disaster Response Pipeline Project
 
+# make some changes agin for code review
+
 ## Summary
 For this project, the dataset contains real messages that were sent during disaster events. I created a machine learning pipeline to categorize these events so that we can send the messages to an appropriate disaster relief agency.
 
